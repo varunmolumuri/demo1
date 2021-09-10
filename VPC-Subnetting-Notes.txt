@@ -1,0 +1,45 @@
+VPC and subnet basics
+
+*A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. 
+*It is logically isolated from other virtual networks in the AWS Cloud. 
+*You can launch your AWS resources, such as Amazon EC2 instances, into your VPC.
+
+When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the 
+form of a Classless Inter-Domain Routing (CIDR) block;
+
+>for example, 10.0.0.0/16. This is the primary CIDR block for your VPC.
+
+>If  a subnet's traffic is routed to an internet gateway, the subnet is known as a 
+public subnet.
+>If a subnet doesn't have a route to the internet gateway, the subnet is known as a private subnet.
+
+>if you create a VPC with CIDR block 10.0.0.0/24, it supports 256 IP addresses. 
+
+>You can break this CIDR block into two subnets, each supporting 128 IP addresses.
+
+>One subnet uses CIDR block 10.0.0.0/25 (for addresses 10.0.0.0 - 10.0.0.127) 
+>the other uses CIDR block 10.0.0.128/25 (for addresses 10.0.0.128 - 10.0.0.255).
+
+Use this tool URL : https://network00.com/NetworkTools/IPv4AddressPlanner/
+
+>When we create subnet ,AWS will engage 5 ip address.
+
+>The first four IP addresses and the 
+>last IP address in each subnet CIDR block are not available for you to use,
+   and cannot be assigned to an instance.  
+   
+1)10.0.0.0: Network address.
+
+2)10.0.0.1: Reserved by AWS for the VPC router.
+
+3)10.0.0.2: Reserved by AWS. 
+   The IP address of the DNS server is the base of the VPC network range plus two. 
+   For VPCs with multiple CIDR blocks, the IP address of the DNS server is located in 
+   the primary CIDR. We also reserve the base of each subnet range plus two for 
+    all CIDR blocks in the VPC. 
+
+4)10.0.0.3: Reserved by AWS for future use.
+
+5)10.0.0.255: Network broadcast address. 
+  We do not support broadcast in a VPC, therefore we reserve this address.
+
